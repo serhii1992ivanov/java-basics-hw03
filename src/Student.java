@@ -2,15 +2,20 @@ public class Student {
   int rating;
   private String name;
 
-  // TODO implement Student class according to the instructions provided in the README.md file
+  public static int studCount;
+  public static double totalRating;
+  public static double averageRating;    // TODO implement Student class according to the instructions provided in the README.md file
 
   public Student(String name) {
-    //TODO initialize name
+    this.name = name;
+    studCount++;     //TODO initialize name
   }
 
   public static double getAvgRating() {
-    // TODO return average rating of all students
-    return 0;
+    if (studCount != 0) {
+      averageRating = (totalRating / studCount); }  // TODO return average     rating of all students
+    return averageRating;
+
   }
 
   public String getName() {
@@ -18,33 +23,43 @@ public class Student {
   }
 
   public void setName(String name) {
-    // TODO set student's name
+    this.name = name;       // TODO          set student's name
   }
 
   public int getRating() {
     return rating;
   }
 
-  public void setRating(int rating) {
-    // TODO initialize rating;
+  public int setRating(int rating) {
+    this.rating = rating;
+    totalRating += this.rating;
+    return rating;          // TODO initialize rating;
+
   }
 
   public boolean betterStudent(Student student) {
-    // TODO return the result of comparing this.student's rating with the student's rating
-    return false;
+    if (this.rating > student.rating) {
+      return true;
+    } else {
+      return false;    // TODO return the result of comparing this.student's rating with the student's rating}
+    }
   }
 
   public void changeRating(int rating) {
-    // TODO change this student's rating and average rating of all students
+    totalRating -= this.rating;
+    this.rating = setRating(rating);   // TODO change this student's rating and average rating of all students
   }
 
   public static void removeStudent(Student student) {
-    // TODO remove student
+    studCount = 0;
+    student.rating = 0;
+    totalRating = 0;
+    averageRating = 0;          //TODO remove student
   }
 
   @Override
   public String toString() {
-    // TODO return String with name and rating of this student
-    return "";
+    return name + " " + rating; // TODO return String with name and rating of this student
+
   }
 }

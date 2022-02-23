@@ -9,6 +9,7 @@ import static org.testng.Assert.*;
 public class StudentTest {
   List<Student> students = new ArrayList<>();
 
+
   @Test
   public void testGetAvgRating() {
 
